@@ -43,4 +43,15 @@ app.get("/showUser/:email",(req,res) =>{
     })
 })
 
+app.delete("/deleteUser/:email",(req,res) =>{
+    let emailId = req.params.email
+    let sql = `DELETE FROM  employee where email = '${emailId}'`
+    db.query(sql,(err,reult) =>{
+        if (err) throw err
+        else 
+        res.json(reult)
+    })
+
+})
+
 app.listen(7000,()=>console.log("server is running "))
